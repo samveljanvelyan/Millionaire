@@ -1,0 +1,29 @@
+{% extends "login_registration/base.html" %}
+{% load static %}
+{% block body_block %}
+<form method="POST">
+    {% csrf_token %}
+{% for q in questions %}
+    <h3 class="text-center">{{q.question}}</h3>
+    {% for ans in q.answer_set.all %}
+        <select class="form-control text-center">
+          <option>A: {{ans.first_answer}}</option>
+          <option>B: {{ans.second_answer}}</option>
+          <option>C: {{ans.third_answer}}</option>
+          <option>D: {{ans.fourth_answer}}</option>
+        </select>
+    {% endfor %}
+{% endfor %}
+    <br>
+    <button type="submit" class="btn btn-success" id="submitButton">Submit</button>
+</form>
+{% endblock %}
+{% block footer %}
+<footer class="page-footer font-small blue">
+    <div class="footer-copyright text-center py-3">© 2020 Copyright:
+        <br>
+        <p>Author: Samvel Janvelyan</p>
+    <a href="https://st-dev.com/"> STDev</a>
+  </div>
+</footer>
+{% endblock %}

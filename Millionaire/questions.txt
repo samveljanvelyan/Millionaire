@@ -1,0 +1,120 @@
+What will be the output of the following Python code? pickle.HIGHEST_PROTOCOL
+4*
+5
+3
+6
+20
+What is the return value of trunc()?
+int*
+bool
+float
+None
+20
+Which of the following statements is true?
+A non-private method in a superclass can be overridden*
+A subclass method can be overridden by the superclass
+A private method in a superclass can be overridden
+Overriding isn’t possible in Python
+20
+What will be the output of the following Python code? import sys sys.stderror.write("hello")
+'hello'
+'hello\n'
+hello
+hello5*
+20
+How many except statements can a try-except block have?
+zero
+one
+more than one
+more than zero*
+20
+What are the method(s) that iterator object must implement?
+__iter__()
+__iter__() and __next__()*
+__iter__() and __super__()
+__iter__(), __super__() and __next__()
+15
+How can you create an iterator object from a list?
+By passing the given list to the iter() function.*
+By using a for loop.
+By using a while loop.
+You cannot create an iterable object from the list.
+15
+If a function contains at least one yield statement, it becomes ______
+an iterable
+a generator function*
+an anonymous function
+None of the above
+15
+What are the criterias that must be met to create closure in Python?
+Program Must have a function inside a function.*
+The nested function must refer to a value defined in the enclosing function.
+The enclosing function must return the nested function.
+All of the above.
+15
+What does ~~~~~~5 evaluate to?
++5*
+-11
++11
+-5
+15
+Is python case sensitive?
+No
+Yes*
+Maybe
+Sometimes
+5
+Which of these is not a core data type?
+Lists
+Dictionary
+Tuples
+Class*
+5
+What data type is the object below ? L = [1, 23, ‘hello’, 1]
+List*
+Dictionary
+Tuple
+Array
+5
+Which of the following function convert a string to a float in python?
+int(x [,base])
+long(x [,base] )
+float(x)*
+str(x)
+5
+print "Hello World"[::-1]
+dlroW olleH*
+Hello Worl
+d
+Error
+5
+Given a function that does not return any value, what value is shown when executed at the shell?
+int
+bool
+void
+None*
+10
+Which module in Python supports regular expressions?
+re*
+regex
+pyregex
+None of the above
+10
+What is the output of the following program:
+True
+False*
+Machine dependent
+Error
+10
+Which of the following is not a complex number?
+k = 2 + 3j
+k = complex(2, 3)
+k = 2 + 3l*
+k = 2 + 3J
+10
+Given a string s = “Welcome”, which of the following code is incorrect?
+print s[0]
+print s.lower()
+s[1] = 'r'*
+print s.strip()
+10

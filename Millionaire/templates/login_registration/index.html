@@ -1,0 +1,39 @@
+{% extends "login_registration/base.html" %}
+{% block nav %}
+<li class="nav-item active">
+    <a class="nav-link" href="{% url 'index' %}">Home <span class="sr-only">(current)</span></a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="{% url 'login_registration:register' %}">Register</a>
+</li>
+{% if user.is_authenticated %}
+<li class="nav-item"><a class="nav-link" href="{% url 'logout' %}">Logout</a></li>
+<li class="nav-item">
+<a class="nav-link" href="{% url 'admin:index'%}">Admin</a>
+</li>
+{% else %}
+<li class="nav-item">
+<a class="nav-link" href="{% url 'login_registration:user_login' %}">Login</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="{% url 'admin:index'%}">Admin</a>
+</li>
+{% endif %}
+{% endblock %}
+{% block body_block %}
+<div class="container">
+    <div class="jumbotron">
+        {% if user.is_authenticated %}
+            <h2 class="text-center">Nice to meet you {{ user.first_name }}
+                {{ user.last_name }} ! </h2>
+             <button id="startTheGame" type="button" class="btn btn-success">
+                 <a id="startTheGameLink" href="{% url 'play:start' %}">Play the game</a></button>
+        {% else %}
+            <h2 class="text-center"><a href="{% url 'login_registration:register' %}">Register</a>
+            or <a href="{% url 'login_registration:user_login' %}">Login</a>
+            if you'd like to play the game.</h2>
+        {% endif %}
+    </div>
+    <img src="static/images/millionaire.jpeg" class="image-center">
+</div>
+{% endblock %}

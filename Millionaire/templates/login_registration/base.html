@@ -1,0 +1,41 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.9.0/css/all.css">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css'%}">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css.map'%}">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css.map'%}">
+    <link rel="stylesheet" href="{% static 'css/style.css'%}">
+    <link rel="shortcut icon" type="image/png" href="{% static 'images/logo.jpg' %}"/>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+    <div class="d-md-flex d-block flex-row mx-md-auto mx-0">
+        <ul class="navbar-nav mr-auto">
+            {% block nav %}
+            {% endblock nav %}
+        </ul>
+    </div>
+</nav>
+{% block body_block %}
+{% endblock %}
+<div class="audio-container">
+    <audio controls id="audioId" class="text-center">
+           <source src="{{MEDIA_URL}}audio/intro.mp3" type="audio/mp3">
+    </audio>
+</div>
+{% block footer %}
+{% endblock %}
+<script src="{% static 'js/jquery.min.js'%}"></script>
+<script src="{% static 'js/popper.min.js'%}"></script>
+<script src="{% static 'js/bootstrap.min.js'%}"></script>
+<script src="{% static 'js/bootstrap.js.map'%}"></script>
+<script src="{% static 'js/bootstrap.min.js.map'%}"></script>
+<script src="{% static 'js/bootstrap.js'%}"></script>
+<script src="{% static 'js/main.js'%}"></script>
+</body>
+</html>
