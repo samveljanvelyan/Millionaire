@@ -31,8 +31,7 @@ class CustomCommands(Command):
 
 system = platform.system()
 if system == 'Linux':
-    commands = [['sudo apt-get install -y python3-pip'],
-                ['pip install -r requirements.txt'],
+    commands = [['pip install -r requirements.txt'],
                 ['cd Millionaire/'], ['python manage.py makemigrations'],
                 ['python manage.py migrate'], ['python database_connector.py']]
 
