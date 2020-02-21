@@ -1,8 +1,4 @@
 #!/bin/bash
-python3 -m venv venv
-source venv/bin/activate
-
-pip install -r requirements.txt
-
-python manage.py makemigrations
-python manage.py migrate
+sudo apt-get update
+sudo apt-get install python3.6
+python3 setup.py
