@@ -2,8 +2,8 @@ import os
 import sqlite3
 from sqlite3 import Error
 
-from Millionaire.helpers import (fill_global_variables, RECORDS_COUNT, QUESTIONS,
-                                 RANKS, ANSWERS, CORRECT_ANSWERS)
+from helpers import (fill_global_variables, RECORDS_COUNT, QUESTIONS,
+                     RANKS, ANSWERS, CORRECT_ANSWERS)
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 DATABASE = os.path.join(BASE_DIR, "db.sqlite3")
