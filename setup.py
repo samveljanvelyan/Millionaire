@@ -32,9 +32,7 @@ class CustomCommands(Command):
 system = platform.system()
 if system == 'Linux':
     commands = [['sudo apt-get install -y python3-pip'],
-                ['sudo apt-get install build-essential libssl-dev libffi-dev python-dev'],
-                ['sudo apt-get install -y python3-venv'], ['python3 -m venv venv'],
-                ['source venv/bin/activate'], ['pip install -r requirements.txt'],
+                ['pip install -r requirements.txt'],
                 ['cd Millionaire/'], ['python manage.py makemigrations'],
                 ['python manage.py migrate'], ['python database_connector.py']]
 
@@ -42,7 +40,7 @@ setup(name='Millionaire',
       author='Samvel Janvelyan',
       packages=find_packages(),
       version='1.0',
-      scripts=['manage.py', 'database_connector.py'],
+      scripts=['Millionaire/database_connector.py'],
       description='Who wants to be a millionaire, implemented with django models.',
       url='https://github.com/samveljanvelyan/Millionaire',
       download_url='https://github.com/samveljanvelyan/Millionaire.git',
