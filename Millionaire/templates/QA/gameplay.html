@@ -1,16 +1,16 @@
 {% extends "login_registration/base.html" %}
 {% load static %}
 {% block body_block %}
-<form method="POST">
+<form method="POST" action="{% url 'QA:result' %}">
     {% csrf_token %}
 {% for q in questions %}
-    <h3 class="text-center">{{q.question}}</h3>
+    <h3 class="text-center">{{q.question}}&nbsp<span class="text-success">{{q.rank}} points</span></h3>
     {% for ans in q.answer_set.all %}
-        <select class="form-control text-center">
-          <option>A: {{ans.first_answer}}</option>
-          <option>B: {{ans.second_answer}}</option>
-          <option>C: {{ans.third_answer}}</option>
-          <option>D: {{ans.fourth_answer}}</option>
+        <select class="form-control text-center" name="selections">
+          <option>{{ans.first_answer}}</option>
+          <option>{{ans.second_answer}}</option>
+          <option>{{ans.third_answer}}</option>
+          <option>{{ans.fourth_answer}}</option>
         </select>
     {% endfor %}
 {% endfor %}

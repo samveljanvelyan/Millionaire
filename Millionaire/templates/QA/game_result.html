@@ -1,0 +1,28 @@
+{% extends "login_registration/base.html" %}
+{% block nav %}
+<li class="nav-item">
+    <a class="nav-link" href="{% url 'index' %}">Home</a>
+</li>
+<li class="nav-item">
+    <a class="nav-link" href="{% url 'QA:leader_board' %}">Leaderboard</a>
+</li>
+{% endblock %}
+{% block body_block %}
+<br>
+<h2 class="text-center">{{first_name}} {{last_name}} - collected points:
+    <span class="text-success">{{points}}</span></h2>
+<br>
+{% for q in questions %}
+<div class="jumbotron"><h3 class="text-center">{{q.question}}</h3>
+</div>
+    {% for ans in q.answer_set.all %}
+        <h5 class="text-center">{{ans.first_answer}}</h5>
+        <h5 class="text-center">{{ans.second_answer}}</h5>
+        <h5 class="text-center">{{ans.third_answer}}</h5>
+        <h5 class="text-center">{{ans.fourth_answer}}</h5>
+    {% endfor %}
+<br>
+{% endfor %}
+<button type="button" class="btn btn-success" id="playAgain">
+    <a id="startTheGameLink" href="{% url 'play:start' %}">Play again?</a></button>
+{% endblock %}

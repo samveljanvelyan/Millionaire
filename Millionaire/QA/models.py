@@ -4,6 +4,7 @@ from django.db import models
 
 # Create your models here.
 class MultipleChoiceQuestion(models.Model):
+    """Questions model."""
     id = models.AutoField(primary_key=True)
     question = models.CharField(max_length=1000, null=True)
     rank = models.IntegerField(default=5, choices=[(5, 5), (10, 10), (15, 15), (20, 20)],
@@ -14,6 +15,7 @@ class MultipleChoiceQuestion(models.Model):
 
 
 class Answer(models.Model):
+    """Answers model."""
     question = models.ForeignKey(
         MultipleChoiceQuestion, on_delete=models.CASCADE, to_field='id', null=True
     )
@@ -29,6 +31,7 @@ class Answer(models.Model):
 
 
 class QuizTaker(models.Model):
+    """User model."""
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     completed = models.BooleanField(default=False)
     points = models.IntegerField(default=0)
