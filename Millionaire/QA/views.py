@@ -33,7 +33,12 @@ def game_result(request):
     """View function for game results."""
     global QUESTIONS, ANSWERS
 
+    # User collected points.
     points = 0
+
+    # Passing to_increment as context to template.
+    to_increment = 0
+
     first_name = request.user.first_name
     last_name = request.user.last_name
     questions, answers = QUESTIONS, ANSWERS
@@ -53,10 +58,10 @@ def game_result(request):
     return render(request, 'QA/game_result.html', {'questions': questions,
                                                    'answers': answers,
                                                    'selected_answers': selected_answers,
-                                                   'correct_answers': correct_answers,
                                                    'first_name': first_name,
                                                    'last_name': last_name,
-                                                   'points': points
+                                                   'points': points,
+                                                   'to_increment': to_increment
                                                    })
 
 

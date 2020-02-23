@@ -1,4 +1,5 @@
 {% extends "login_registration/base.html" %}
+{% load custom_tags %}
 {% block nav %}
 <li class="nav-item">
     <a class="nav-link" href="{% url 'index' %}">Home</a>
@@ -13,15 +14,24 @@
     <span class="text-success">{{points}}</span></h2>
 <br>
 {% for q in questions %}
-<div class="jumbotron"><h3 class="text-center">{{q.question}}</h3>
+<div class="jumbotron"><h3 class="text-center">{{q.question}}
+    <span class="text-success"> - {{q.rank}} points</span></h3>
 </div>
     {% for ans in q.answer_set.all %}
         <h5 class="text-center">{{ans.first_answer}}</h5>
         <h5 class="text-center">{{ans.second_answer}}</h5>
         <h5 class="text-center">{{ans.third_answer}}</h5>
         <h5 class="text-center">{{ans.fourth_answer}}</h5>
+        <br>
+    {% if selected_answers|get_at_index:to_increment == ans.correct_answer %}
+        <h5 class="text-center text-success"> Selected answer: {{selected_answers|get_at_index:to_increment}} </h5>
+    {% else %}
+        <h5 class="text-center text-danger"> Selected answer: {{selected_answers|get_at_index:to_increment}} </h5>
+    {% endif %}
+        <h5 class="text-center text-success">Correct answer: {{ans.correct_answer}}</h5>
     {% endfor %}
 <br>
+{% ++ to_increment %}
 {% endfor %}
 <button type="button" class="btn btn-success" id="playAgain">
     <a id="startTheGameLink" href="{% url 'play:start' %}">Play again?</a></button>
