@@ -76,7 +76,7 @@ Dictionary
 Tuple
 Array
 5
-Which of the following function convert a string to a float in python?
+Which of the following functions converts a string to a float in python?
 int(x [,base])
 long(x [,base] )
 float(x)*

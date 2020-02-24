@@ -1,8 +1,25 @@
 {% extends "login_registration/base.html" %}
+{% block title %}
+<title>Leader board</title>
+{% endblock %}
 {% block nav %}
 <li class="nav-item">
     <a class="nav-link" href="{% url 'index' %}">Home</a>
 </li>
 {% endblock %}
 {% block body_block %}
+    <table align="center">
+      <tr>
+        <th class="text-center text-success">Name</th>
+        <th class="text-center text-success">Surname</th>
+        <th class="text-center text-success">Points</th>
+      </tr>
+        {% for player in users_by_points_in_desc_order %}
+        <tr>
+            <td class="text-center">{{player.user.first_name}}</td>
+            <td class="text-center">{{player.user.last_name}}</td>
+            <td class="text-center">{{player.points}}</td>
+        </tr>
+        {% endfor %}
+    </table>
 {% endblock %}

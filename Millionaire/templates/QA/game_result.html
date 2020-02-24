@@ -1,5 +1,8 @@
 {% extends "login_registration/base.html" %}
 {% load custom_tags %}
+{% block title %}
+<title>Game result</title>
+{% endblock %}
 {% block nav %}
 <li class="nav-item">
     <a class="nav-link" href="{% url 'index' %}">Home</a>
@@ -24,9 +27,11 @@
         <h5 class="text-center">{{ans.fourth_answer}}</h5>
         <br>
     {% if selected_answers|get_at_index:to_increment == ans.correct_answer %}
-        <h5 class="text-center text-success"> Selected answer: {{selected_answers|get_at_index:to_increment}} </h5>
+        <h5 class="text-center text-success"> Selected answer:
+            {{selected_answers|get_at_index:to_increment}} </h5>
     {% else %}
-        <h5 class="text-center text-danger"> Selected answer: {{selected_answers|get_at_index:to_increment}} </h5>
+        <h5 class="text-center text-danger"> Selected answer:
+            {{selected_answers|get_at_index:to_increment}} </h5>
     {% endif %}
         <h5 class="text-center text-success">Correct answer: {{ans.correct_answer}}</h5>
     {% endfor %}
@@ -34,5 +39,5 @@
 {% ++ to_increment %}
 {% endfor %}
 <button type="button" class="btn btn-success" id="playAgain">
-    <a id="startTheGameLink" href="{% url 'play:start' %}">Play again?</a></button>
+    <a id="startTheGameLink" href="{% url 'play:start' %}">Play again</a></button>
 {% endblock %}

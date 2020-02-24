@@ -1,10 +1,20 @@
 {% extends "login_registration/base.html" %}
 {% load static %}
+{% block title %}
+<title>Game started</title>
+{% endblock %}
+{% block nav %}
+<li class="nav-item">
+    <a class="nav-link" href="{% url 'index' %}">Home</a>
+</li>
+{% endblock %}
 {% block body_block %}
+<div class="jumbotron">
 <form method="POST" action="{% url 'QA:result' %}">
     {% csrf_token %}
 {% for q in questions %}
-    <h3 class="text-center">{{q.question}}&nbsp<span class="text-success">{{q.rank}} points</span></h3>
+    <h3 class="text-center">{{q.question}}&nbsp<span class="text-success">
+        {{q.rank}} points</span></h3>
     {% for ans in q.answer_set.all %}
         <select class="form-control text-center" name="selections">
           <option>{{ans.first_answer}}</option>
@@ -26,4 +36,5 @@
     <a href="https://st-dev.com/"> STDev</a>
   </div>
 </footer>
+</div>
 {% endblock %}

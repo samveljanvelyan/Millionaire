@@ -8,6 +8,7 @@
 #startTheGameLink {
   text-decoration: none;
   color: inherit;
+  font-size: 20px;
 }
 
 #registerButton {
@@ -16,7 +17,7 @@
 }
 
 #submitButton {
-  font-size: 25px;
+  font-size: 20px;
   margin-left: 47%;
 }
 
@@ -54,4 +55,20 @@
   margin-left: auto;
   margin-right: auto;
   width: 20%
+}
+
+table {
+  border: 1px solid black;
+  font-family: arial, sans-serif;
+  width: 50%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
 }

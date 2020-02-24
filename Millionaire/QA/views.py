@@ -1,7 +1,7 @@
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render
 
-from .models import MultipleChoiceQuestion, Answer
+from .models import MultipleChoiceQuestion, Answer, QuizTaker
 
 # Global variables are used to pass generated questions and received answers from start_the_game
 # to game_result function.
@@ -55,6 +55,19 @@ def game_result(request):
     for index, answer in enumerate(selected_answers):
         if selected_answers[index] == correct_answers[index]:
             points += questions[index].rank
+
+    # Checking if user is recorded in database. Updating the user's points value
+    # if collected points are greater than the one stored in database.
+    try:
+        quiz_taker = QuizTaker.objects.get(user=request.user)
+    except:
+        quiz_taker = QuizTaker.objects.create(user=request.user,
+                                              completed=True,
+                                              points=points)
+    if points > quiz_taker.points:
+        quiz_taker.points = points
+        quiz_taker.save()
+
     return render(request, 'QA/game_result.html', {'questions': questions,
                                                    'answers': answers,
                                                    'selected_answers': selected_answers,
@@ -68,4 +81,8 @@ def game_result(request):
 @login_required
 def show_leader_board(request):
     """View function for showing the leader board."""
-    return render(request, 'QA/leader_board.html')
+    users_by_points_in_desc_order = QuizTaker.objects.raw("""SELECT * FROM QA_quiztaker 
+                                                  ORDER BY points DESC LIMIT 10""")
+    return render(request, 'QA/leader_board.html', {
+        'users_by_points_in_desc_order': users_by_points_in_desc_order}
+                  )
